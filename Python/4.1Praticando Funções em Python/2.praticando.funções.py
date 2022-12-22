@@ -1,0 +1,21 @@
+def calcular_valor(valor_prod, qtde, moeda="real", **kwargs):
+    v_bruto = valor_prod * qtde
+
+    if 'desconto' in kwargs:
+        desconto = kwargs['desconto']
+        v_liquido = v_bruto - (v_bruto * (desconto / 100))
+    elif 'acrescimo' in kwargs:
+        acrescimo = kwargs['acrescimo']
+        v_liquido = v_bruto + (v_bruto * (acrescimo / 100))
+    else:
+        v_liquido = v_bruto
+
+    if moeda == 'real':
+        return v_liquido
+    elif moeda == 'dolar':
+        return v_liquido * 5
+    elif moeda == 'euro':
+        return v_liquido * 5.7
+    else:
+        print("Moeda não cadastrada!")
+        return 0
